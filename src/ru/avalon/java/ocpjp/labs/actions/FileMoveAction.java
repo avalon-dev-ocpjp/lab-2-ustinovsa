@@ -1,6 +1,9 @@
 package ru.avalon.java.ocpjp.labs.actions;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Действие, которое перемещает файлы в пределах дискового
@@ -15,25 +18,15 @@ public class FileMoveAction implements Action {
         /*
          * TODO №4 Реализуйте метод run класса FileMoveAction
          */
-        File destinationFolder = new File("C:\\Users\\UIS\\Downloads");
-        File sourceFolder = new File("c:\\Users\\UIS\\Desktop\\Avalon\\lab-1\\lab-1\\src\\ru\\avalon\\java\\ocpjp\\labs\\resources\\newnames.txt");
-
-        if(!destinationFolder.exists()) {
-            destinationFolder.mkdirs();
+        File distination = FileUtils.getFile ("C:\\Users\\UIS\\Downloads\\Source\\");
+        File source = FileUtils.getFile("c:\\Users\\UIS\\Desktop\\Avalon\\lab-1\\lab-1\\src\\ru\\avalon\\java\\ocpjp\\labs\\resources\\first-names.txt");
+        try {
+            FileUtils.moveFileToDirectory(source, distination, false);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        if(sourceFolder.exists() && sourceFolder.isFile()) {
-            File[] listOffFiles = sourceFolder.listFiles(); // список файлов в виде массива
-            if(listOffFiles != null) {
-                for (File child : listOffFiles) {
-                    child.renameTo(new File(destinationFolder + "\\" + child.getName()));
-                }
-            }
-        } else {
-            System.out.println(sourceFolder + "Folder does not exists");
-        }
-
-        throw new UnsupportedOperationException("Not implemented yet!");
+        //throw new UnsupportedOperationException("Not implemented yet!");
     }
 
     /**
