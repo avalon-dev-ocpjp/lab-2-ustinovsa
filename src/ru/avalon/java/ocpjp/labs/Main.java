@@ -1,6 +1,7 @@
 package ru.avalon.java.ocpjp.labs;
 
 import ru.avalon.java.ocpjp.labs.actions.FileCopyAction;
+import ru.avalon.java.ocpjp.labs.actions.FileMoveBack;
 import ru.avalon.java.ocpjp.labs.actions.FileMoveAction;
 import ru.avalon.java.ocpjp.labs.console.ConsoleUI;
 
@@ -54,9 +55,13 @@ public class Main extends ConsoleUI<Commands> {
                  */
                 new Thread(new FileMoveAction()).start();
                 break;
+            case moveback:
+                new Thread(new FileMoveBack()).start();
+                break;
             case exit:
                 close();
                 break;
+
                 /*
                  * TODO №9 Обработайте необработанные команды
                  */
