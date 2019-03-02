@@ -53,29 +53,45 @@ public class Main extends ConsoleUI<Commands> {
                 /*
                  * TODO №6 Обработайте команду copy
                  */
-                FileCopyAction fcopy = new FileCopyAction();
-                fcopy.start();
-
+                try (
+                        FileCopyAction fcopy = new FileCopyAction()) {
+                    fcopy.start();
+                } catch (Exception ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
+
+
             case move:
                 /*
                  * TODO №7 Обработайте команду move
                  */
-                FileMoveAction fmove = new FileMoveAction();
-                fmove.start();
 
+                try (FileMoveAction fmove = new FileMoveAction()) {
+                    fmove.start();
+                } catch (Exception ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case exit:
                 close();
                 break;
 
             case delete:
-                FileDeleteAction fdelete = new FileDeleteAction();
-                fdelete.start();
+
+                try (FileDeleteAction fdelete = new FileDeleteAction()) {
+                    fdelete.start();
+                } catch (Exception ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case create:
-                FileCreateAction fcreate = new FileCreateAction();
-                fcreate.start();
+                try (FileCreateAction fcreate = new FileCreateAction()) {
+                    fcreate.start();
+                } catch (Exception ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 break;
             /*
                  * TODO №9 Обработайте необработанные команды
