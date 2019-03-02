@@ -13,8 +13,8 @@ import java.nio.file.StandardCopyOption;
  * пространства.
  */
 public class FileMoveAction implements Action {
-    private static String PATH_FROM;
-    private static String PATH_TO;
+    private String PATH_FROM;
+    private String PATH_TO;
     
     public FileMoveAction(String[] args) {
         PATH_FROM = args[1];
