@@ -12,7 +12,7 @@ import java.nio.file.Paths;
  */
 public class FileDeleteAction implements Action {
 
-    private static String FILE_PATH;
+    private String FILE_PATH;
     
     public FileDeleteAction(String[] args) {
         FILE_PATH = args[1];
