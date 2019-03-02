@@ -16,8 +16,15 @@ public class FileDeleteAction implements Action{
      String file = "Exam808_SampleQuestion.pdf";
     String path = "D:\\Users\\Bozhenkov\\lab2\\";
     public void delete(){
+        
         File f = new File(path, file);
+        if(f.isFile()){
         boolean deleted = f.delete();
+        if(deleted)
+            System.out.println("File deleted");
+        } else {
+            System.out.println("File not found");
+        }
     }
     
     @Override

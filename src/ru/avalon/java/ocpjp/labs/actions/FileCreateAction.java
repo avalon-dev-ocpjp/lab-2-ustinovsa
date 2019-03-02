@@ -19,7 +19,13 @@ public class FileCreateAction implements Action{
     String path = "D:\\Users\\Bozhenkov\\lab2\\";
 public void create() throws IOException{
     File f = new File(path, file);
+    if(f.isFile()){
+        System.out.println("File is already existed");
+    }else {
     boolean created = f.createNewFile();
+    if(created)
+        System.out.println("File created");
+    }
 }
     @Override
     public void run() {
@@ -33,7 +39,7 @@ public void create() throws IOException{
 
     @Override
     public void close() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
     
 }
