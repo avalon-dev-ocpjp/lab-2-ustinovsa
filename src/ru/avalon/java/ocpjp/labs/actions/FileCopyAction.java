@@ -12,8 +12,8 @@ import java.nio.file.StandardCopyOption;
  */
 public class FileCopyAction implements Action {
 
-    private static String PATH_FROM;
-    private static String PATH_TO;
+    private String PATH_FROM;
+    private String PATH_TO;
     public FileCopyAction(String[] args) {
         PATH_FROM = args[1];
         PATH_TO = args[2];
