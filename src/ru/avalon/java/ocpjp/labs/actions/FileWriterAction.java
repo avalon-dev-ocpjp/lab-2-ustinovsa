@@ -12,7 +12,7 @@ import java.nio.file.Paths;
  */
 public class FileWriterAction implements Action {
 
-    private static String FILE_PATH;
+    private String FILE_PATH;
     private String line;
 
     public FileWriterAction(String[] args) {
