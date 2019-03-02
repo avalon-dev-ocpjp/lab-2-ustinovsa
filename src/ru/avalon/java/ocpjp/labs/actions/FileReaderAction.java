@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  */
 public class FileReaderAction implements Action {
 
-    private static String FILE_PATH;
+    private String FILE_PATH;
 
     public FileReaderAction(String[] args) {
         FILE_PATH = args[1];
