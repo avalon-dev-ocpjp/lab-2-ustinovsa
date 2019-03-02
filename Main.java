@@ -61,10 +61,12 @@ public class Main extends ConsoleUI<Commands> {
                 }
                 break;
 
+
             case move:
                 /*
                  * TODO №7 Обработайте команду move
                  */
+
                 try (FileMoveAction fmove = new FileMoveAction()) {
                     fmove.start();
                 } catch (Exception ex) {
@@ -76,6 +78,7 @@ public class Main extends ConsoleUI<Commands> {
                 break;
 
             case delete:
+
                 try (FileDeleteAction fdelete = new FileDeleteAction()) {
                     fdelete.start();
                 } catch (Exception ex) {
@@ -91,9 +94,6 @@ public class Main extends ConsoleUI<Commands> {
 
                 break;
             /*
-                 * TODO №9 Обработайте необработанные команды
-             */
- /*
                  * TODO №9 Обработайте необработанные команды
              */
         }
