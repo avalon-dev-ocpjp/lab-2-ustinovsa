@@ -17,7 +17,8 @@ public class FileCopyAction implements Action {
     private File source;
     private File dest;
     
-    public FileCopyAction() throws IOException {
+    public FileCopyAction()  {
+        try {
         System.out.println("Input the source file's path to copy: ");
         Scanner sc = new Scanner(System.in);
         source = new File(sc.next());
@@ -32,7 +33,10 @@ public class FileCopyAction implements Action {
             }
         } else {
         System.out.println("Source file does not exist");
-        }   
+        } 
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
     
     @Override
@@ -44,8 +48,8 @@ public class FileCopyAction implements Action {
             synchronized (source) {
             Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
             }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage()); 
+        } catch (IOException | NullPointerException ex) {
+            System.err.println(ex.getMessage()); 
         }
     }
 

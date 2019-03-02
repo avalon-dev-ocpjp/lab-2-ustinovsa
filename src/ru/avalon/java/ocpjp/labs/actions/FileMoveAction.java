@@ -17,13 +17,14 @@ public class FileMoveAction implements Action {
     private File source;
     private File dest;
     
-    public FileMoveAction() throws IOException {
+    public FileMoveAction() {
+        try {
         System.out.println("Input the source file's path to move: ");
         Scanner sc = new Scanner(System.in);
         source = new File(sc.next());
         if (source.exists()) {
             System.out.println("Input the destination file's path to move: ");
-            dest = new File(sc.next() + source.getName());
+            dest = new File(sc.next() + "/" + source.getName());
             if (!dest.exists()) {
                 this.dest.createNewFile();
                 System.out.println("File copied and located on the path " + dest);
@@ -32,7 +33,10 @@ public class FileMoveAction implements Action {
             }
         } else {
         System.out.println("Source file does not exist");
-        }   
+        }  
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        } 
     }
     
     @Override
@@ -44,8 +48,8 @@ public class FileMoveAction implements Action {
             synchronized (source) {
             Files.move(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
             }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        } catch (IOException | NullPointerException ex) {
+            System.err.println(ex.getMessage());
         }
     }
 

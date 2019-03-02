@@ -19,12 +19,16 @@ public class FileDeleteAction implements Action {
     private File file;
     
     public FileDeleteAction() {
+        try {
         System.out.println("Input the source file's path to delete: ");
         Scanner sc = new Scanner(System.in);
         file = new File(sc.next());
         if (!file.exists()) {
             System.out.println("Source file does not exist");
         } 
+        } catch (NullPointerException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 
     @Override
@@ -34,8 +38,8 @@ public class FileDeleteAction implements Action {
             Files.delete(file.toPath());
             System.out.println("File was deleted");
             }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        } catch (IOException | NullPointerException ex) {
+            System.err.println(ex.getMessage());
         }
     }
 

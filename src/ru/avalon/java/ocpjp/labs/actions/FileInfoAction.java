@@ -19,12 +19,16 @@ public class FileInfoAction implements Action {
     private File file;
     
     public FileInfoAction() {
+        try {
         System.out.println("Input the source file's path to get info: ");
         Scanner sc = new Scanner(System.in);
         file = new File(sc.next());
         if (!file.exists()) {
             System.out.println("Source file does not exist");
         } 
+        } catch (NullPointerException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 
     @Override
@@ -36,8 +40,8 @@ public class FileInfoAction implements Action {
             System.out.println("Last time modified: " + Files.getLastModifiedTime(file.toPath()));
             System.out.println("File store: " + Files.getFileStore(file.toPath()));
             }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        } catch (IOException | NullPointerException ex) {
+            System.err.println(ex.getMessage());
         }
     }
 
