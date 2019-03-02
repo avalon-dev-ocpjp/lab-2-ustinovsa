@@ -13,44 +13,16 @@ public interface Action extends Runnable, AutoCloseable {
 
     /**
      * Запускает потоковый объект на исполнение в отдельном потоке исполнения.
+     * @param action
      */
-    default void start(String action) {
+    default void start() {
         /*
          * TODO №1 Реализуйте метод start интерфейса Action.
          */
-        switch (action) {
 
-            case "copy":
-                try (FileCopyAction fcopy = new FileCopyAction()){
-                    fcopy.run();
-                } catch (Exception ex) {
-            Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                
-                break;
-            case "move":
-               try(FileMoveAction fmove = new FileMoveAction()){
-                fmove.run();
-               } catch (Exception ex) {
-            Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                break;
-            case "create":
-                try(FileCreateAction fcreate = new FileCreateAction()){
-                fcreate.run();
-                } catch (Exception ex) {
-            Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                break;
-            case "delete":
-                try(FileDeleteAction fdelete = new FileDeleteAction()){
-                fdelete.run();
-                } catch (Exception ex) {
-            Logger.getLogger(Action.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                break;
+        Thread thread = new Thread(this);
+        thread.start();
 
-        }
     }
 
 }

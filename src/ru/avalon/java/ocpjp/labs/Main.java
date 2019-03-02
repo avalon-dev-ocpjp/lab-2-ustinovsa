@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import ru.avalon.java.ocpjp.labs.actions.Action;
 import ru.avalon.java.ocpjp.labs.actions.FileCopyAction;
+import ru.avalon.java.ocpjp.labs.actions.FileCreateAction;
+import ru.avalon.java.ocpjp.labs.actions.FileDeleteAction;
 import ru.avalon.java.ocpjp.labs.actions.FileMoveAction;
 
 /**
@@ -45,33 +47,53 @@ public class Main extends ConsoleUI<Commands> {
      */
     @Override
     protected void onCommand(Commands command) throws IOException {
-        Action cmd = new FileCopyAction();
+
         switch (command) {
             case copy:
                 /*
                  * TODO №6 Обработайте команду copy
                  */
-
-                cmd.start("copy");
-
+                try (
+                        FileCopyAction fcopy = new FileCopyAction()) {
+                    fcopy.start();
+                } catch (Exception ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
+
             case move:
                 /*
                  * TODO №7 Обработайте команду move
                  */
-
-                cmd.start("move");
+                try (FileMoveAction fmove = new FileMoveAction()) {
+                    fmove.start();
+                } catch (Exception ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case exit:
                 close();
                 break;
+
             case delete:
-                cmd.start("delete");
+                try (FileDeleteAction fdelete = new FileDeleteAction()) {
+                    fdelete.start();
+                } catch (Exception ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             case create:
-                cmd.start("create");
+                try (FileCreateAction fcreate = new FileCreateAction()) {
+                    fcreate.start();
+                } catch (Exception ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 break;
             /*
+                 * TODO №9 Обработайте необработанные команды
+             */
+ /*
                  * TODO №9 Обработайте необработанные команды
              */
         }
