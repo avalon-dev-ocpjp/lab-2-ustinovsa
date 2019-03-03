@@ -14,16 +14,11 @@ public interface Action extends Runnable, AutoCloseable {
      * потоке исполнения.
      */
     default void start() {
-        Runnable task = () -> {
-            Action.this.run();
-
-            try {
-                Action.this.close();
-            } catch (Exception e) {
-                e.printStackTrace(System.err);
-            }
-        };
-        task.run();
+        /*
+         * TODO №1 Реализуйте метод start интерфейса Action.
+         */
+        Thread thread = new Thread();
+        thread.start();
     }
     
 }

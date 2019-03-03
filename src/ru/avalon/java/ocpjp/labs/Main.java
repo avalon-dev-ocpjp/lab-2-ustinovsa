@@ -1,11 +1,13 @@
 package ru.avalon.java.ocpjp.labs;
 
-import ru.avalon.java.ocpjp.labs.actions.FileCopyAction;
-import ru.avalon.java.ocpjp.labs.actions.FileMoveAction;
 import ru.avalon.java.ocpjp.labs.console.ConsoleUI;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import ru.avalon.java.ocpjp.labs.actions.Action;
+import ru.avalon.java.ocpjp.labs.actions.FileCopyAction;
+import ru.avalon.java.ocpjp.labs.actions.FileDeleteAction;
+import ru.avalon.java.ocpjp.labs.actions.FileInfoAction;
+import ru.avalon.java.ocpjp.labs.actions.FileMoveAction;
 
 /**
  * Лабораторная работа №2
@@ -44,21 +46,37 @@ public class Main extends ConsoleUI<Commands> {
     protected void onCommand(Commands command) throws IOException {
         switch (command) {
             case copy:
-                FileCopyAction copyAction = new FileCopyAction("txt.txt", "txt2.txt");
-                copyAction.start();
+                /*
+                 * TODO №6 Обработайте команду copy
+                 */
+                Action copyFile = new FileCopyAction();
+                copyFile.run();
                 break;
+                
             case move:
-                FileMoveAction moveAction = new FileMoveAction("txt.txt", "txt2.txt");
-                moveAction.start();
+                /*
+                 * TODO №7 Обработайте команду move
+                 */
+                Action moveFile = new FileMoveAction();
+                moveFile.run();
                 break;
+                
+            case info:
+                Action infoFile = new FileInfoAction();
+                infoFile.run();
+                break;
+                
+            case delete:
+                Action deleteFile = new FileDeleteAction();
+                deleteFile.run();
+                break;
+                
             case exit:
                 close();
                 break;
-            case run:
-                System.err.println("Nothing to do on command: " + command.toString());
-                break;
-            case begin:
-                System.err.println("Nothing to do on command: " + command.toString());
+                /*
+                 * TODO №9 Обработайте необработанные команды
+                 */
         }
     }
     
