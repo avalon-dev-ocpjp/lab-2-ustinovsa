@@ -12,22 +12,20 @@ public class FileCopyAction implements Action {
     /**
      * {@inheritDoc}
      */
+    ArrayList<String> newnames = new ArrayList<>();
+    File file = new File("C:\\Users\\UIS\\Desktop\\1\\src\\ru\\avalon\\java\\ocpjp\\labs\\resources\\first-names.txt");
+
     @Override
     public void run() {
-        /*
-         * TODO №2 Реализуйте метод run класса FileCopyAction
-         */
-        ArrayList<String> newnames = new ArrayList<>();
-        File file = new File("c:\\Users\\UIS\\Desktop\\Avalon\\lab-1\\lab-1\\src\\ru\\avalon\\java\\ocpjp\\labs\\resources\\first-names.txt");
+
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 newnames.add(scanner.nextLine()); // записал в все строки из файла в ArrayList
                 Writer writer = null;
-                writer = new FileWriter("c:\\Users\\UIS\\Desktop\\Avalon\\lab-1\\lab-1\\src\\ru\\avalon\\java\\ocpjp\\labs\\resources\\newnames.txt");
+                writer = new FileWriter("C:\\Users\\UIS\\Desktop\\1\\src\\ru\\avalon\\java\\ocpjp\\labs\\newresourcers\\newnames.txt");
                 for (String line : newnames) { // перезаписал в другой файл всё из ArrayList
                     writer.write(line);
-                    writer.write(System.getProperty(" "));
                 }
             }
         } catch (FileNotFoundException e) {
@@ -35,8 +33,6 @@ public class FileCopyAction implements Action {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        throw new UnsupportedOperationException("Not implemented yet!");
     }
 
     /**
@@ -44,10 +40,9 @@ public class FileCopyAction implements Action {
      */
     @Override
     public void close() throws Exception {
-        /*
-         * TODO №3 Реализуйте метод close класса FileCopyAction
-         */
-        close();
+
+        newnames = null;
+
         throw new UnsupportedOperationException("Not implemented yet!");
     }
 }

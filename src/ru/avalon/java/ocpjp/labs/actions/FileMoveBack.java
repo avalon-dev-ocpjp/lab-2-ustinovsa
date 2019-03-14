@@ -14,8 +14,8 @@ public class FileMoveBack implements Action{
 
     @Override
     public void run() {
-        File source1 = FileUtils.getFile ("c:\\Users\\UIS\\Desktop\\Avalon\\lab-1\\lab-1\\src\\ru\\avalon\\java\\ocpjp\\labs\\newresources\\last-names.txt");
-        File distination1 = FileUtils.getFile("c:\\Users\\UIS\\Desktop\\Avalon\\lab-1\\lab-1\\src\\ru\\avalon\\java\\ocpjp\\labs\\resources\\");
+        File source1 = FileUtils.getFile ("C:\\Users\\UIS\\Desktop\\1\\src\\ru\\avalon\\java\\ocpjp\\labs\\newresourcers\\last-names.txt");
+        File distination1 = FileUtils.getFile("C:\\Users\\UIS\\Desktop\\1\\src\\ru\\avalon\\java\\ocpjp\\labs\\resources\\");
         try {
             FileUtils.moveFileToDirectory(source1, distination1, false);
         } catch (IOException e) {

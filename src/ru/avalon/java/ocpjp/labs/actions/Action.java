@@ -9,15 +9,15 @@ package ru.avalon.java.ocpjp.labs.actions;
  * основной поток исполнения.
  */
 public interface Action extends Runnable, AutoCloseable {
+
+
     /**
      * Запускает потоковый объект на исполнение в отдельном
      * потоке исполнения.
      */
     default void start() {
-        /*
-         * TODO №1 Реализуйте метод start интерфейса Action.
-         */
-        Thread thread = new Thread();
+
+        Thread thread = new Thread(this::start);
         thread.start();
 
         throw new UnsupportedOperationException("Not implemented yet!");

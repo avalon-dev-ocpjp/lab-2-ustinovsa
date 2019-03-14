@@ -1,6 +1,7 @@
 package ru.avalon.java.ocpjp.labs;
 
 import ru.avalon.java.ocpjp.labs.actions.FileCopyAction;
+import ru.avalon.java.ocpjp.labs.actions.FileDelete;
 import ru.avalon.java.ocpjp.labs.actions.FileMoveBack;
 import ru.avalon.java.ocpjp.labs.actions.FileMoveAction;
 import ru.avalon.java.ocpjp.labs.console.ConsoleUI;
@@ -44,28 +45,19 @@ public class Main extends ConsoleUI<Commands> {
     protected void onCommand(Commands command) throws IOException {
         switch (command) {
             case copy:
-                /*
-                 * TODO №6 Обработайте команду copy
-                 */
                 new Thread(new FileCopyAction()).start();
                 break;
             case move:
-                /*
-                 * TODO №7 Обработайте команду move
-                 */
                 new Thread(new FileMoveAction()).start();
                 break;
             case moveback:
                 new Thread(new FileMoveBack()).start();
                 break;
+            case delete:
+                new Thread(new FileDelete()).start();
             case exit:
                 close();
                 break;
-
-                /*
-                 * TODO №9 Обработайте необработанные команды
-                 */
         }
     }
-    
 }
